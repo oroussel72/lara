@@ -1,0 +1,59 @@
+// --- Parameters files for Lara ---
+
+// --- Geometry ---
+
+Dimension = 2;
+NX = 1024;
+NY = 256;
+NZ = 1;
+real r = 1.491E-03;
+XMin = -0.5*r;
+XMax = 7.5*r;
+YMin = -r;
+YMax = r;
+BCXMin = AdiabaticWall;
+BCXMax = Outlet;
+BCYMin = AdiabaticWall;
+BCYMax = AdiabaticWall;
+
+// --- Numerics ---
+
+Equation = NavierStokes;
+Scheme = AUSM;
+Reconstruction = MUSCL;
+Limiter = Koren;
+SpeciesNb = 2;
+StepNb = 3;
+CFL = 0.5;
+TotalTime = 2.E-3;
+WriteNb = 50;
+WriteFormat = VTK;
+Restart = true;
+
+// --- Physics ---
+
+IsInviscid = false;
+Viscosity = 1.7E-05;
+ConstantViscosity = true;
+Gamma = 1.4;
+Pr = 1.;
+R = 8.31;
+MolarMass = 2.9E-02;
+
+real Le = 1.;
+real rho = 1.163;
+real nu = Viscosity/rho;
+MassDiffusivity.set(1,nu/(Pr*Le));
+
+// --- Detonation ---
+
+Detonation = true;
+Q0 = 2.106E+06;
+Ta = 16800.;
+Ti = 0.;
+K0 = 1/1.359328440708137e-09;
+RKFTimeStepFactor = 0.5;
+
+ 
+
+

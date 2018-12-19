@@ -1,0 +1,14 @@
+// --- Additional parameters ---
+
+real r = 0.2;
+//real dx = 0.05;
+//real tau = 0.2;
+//real pi = 3.1415926536;
+//real x0 = 0.5 + dx*cos(2*pi*t/tau);
+real x0 = 0.5;
+real y0 = 1.;
+
+// --- Zone to penalize ---
+
+if ( SQR(x-x0) + SQR(y-y0) <= SQR(r) )
+	immersed = true;

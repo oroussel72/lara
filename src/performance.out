@@ -1,0 +1,15 @@
+                 Solver :              FV
+              Dimension :               2
+                 Scales :               8
+                  Cells :           65536
+    Time accuracy order :               3
+             Iterations :               0
+      Average time step :  0.00000000e+00
+  Physical time (total) :  0.00000000e+00
+           CPU time (s) :  2.62000000e+00
+    CPU time / it. x pt :             inf
+
+         Total CPU time :  0 s
+
+Numerical instability detected at iteration 1, position (     0.00390625,     0.00390625,     0.00000000)
+

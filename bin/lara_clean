@@ -1,0 +1,4 @@
+rm -f *.gnu
+rm -f *.vtk
+rm -f *.out
+rm -f lara

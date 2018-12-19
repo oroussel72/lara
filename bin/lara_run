@@ -1,0 +1,29 @@
+export LARA_TEST=$PWD
+echo "Lara Compiler"
+echo "Copyright (C) 2014-2015 by Olivier Roussel"
+echo "Compilation for local execution"
+echo
+rm -f *.vtk
+rm -f *.gnu
+rm -f *~
+rm -f *.out
+cp $LARA_TEST/*.dat $LARA_DIR/
+cd $LARA_DIR
+rm -f lara
+rm -f Parameters.o
+make
+echo
+cd $LARA_TEST
+if [ -e $LARA_DIR/lara ] ; then
+	echo lara: end compilation.
+	cp $LARA_DIR/lara .	
+	nice ./lara -v
+	rm -f lara
+	rm -f gmon.out
+	echo lara: goodbye.
+	echo
+else
+	echo lara: abort compilation.
+	echo lara: goodbye.
+	echo
+fi

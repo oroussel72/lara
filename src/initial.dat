@@ -1,0 +1,47 @@
+// --- Write rho, u, p, Y(1) in function of x and y ---
+
+real x0 = 0.;
+real T1, T2, Y1, Y2, rho1, rho2, u2;
+
+real p0 = 1.E+05;
+real Lf = 5.965E-05;
+real Uf = 2.45E-01;
+real Theta = 8.;
+real Tinf = 300.;
+real r = 1.491E-03;
+
+real Uinf = Theta*Uf;
+
+// --- Left state (burnt) ---
+
+T1 = Theta*Tinf;
+Y1 = 0.;
+rho1 = MolarMass*p0/(R*T1);
+
+// --- Right state (preheat+fresh) ---
+
+T2 = (T1-Tinf)*exp((x0-x)/Lf)+Tinf;
+Y2 = 1. - exp((x0-x)/Lf);
+rho2 = MolarMass*p0/(R*T2);
+u2 = Uinf*(1. - exp((x0-x)/Lf));
+
+// --- Initial condition ---
+
+if (x <= x0)
+{
+	rho = rho1;
+	u = 0.;
+	p = p0;
+	Y.set(1, Y1);
+
+}
+else
+{
+	rho = rho2;
+	u = u2;
+	p = p0;
+	Y.set(1, Y2);
+}
+
+if (y >= r || y <= -r)
+	u = 0.;
